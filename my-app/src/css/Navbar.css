@@ -1,0 +1,4 @@
+ul{padding: 0;}
+a{color:rgb(3, 218, 198); text-decoration: none; text-decoration: underline 0.15em rgba(0, 0, 0, 0); transition: text-decoration-color 300ms;}
+a:hover {text-decoration-color: rgb(3, 218, 198);}
+a:not(:first-child){margin-left:1em}
