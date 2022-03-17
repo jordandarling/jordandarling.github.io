@@ -1,5 +1,6 @@
 import '../css/Util.css'
 
+//TODO Add const OPTIONS that replaces my method/headers in the fetch statements
 const TOKEN = '';
 
 export const SearchBar = (props) => {
