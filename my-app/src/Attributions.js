@@ -13,6 +13,7 @@ const Attributions = () => {
             <ul>
                 <li><a href="https://pages.github.com/" target="_blank" rel="noreferrer">Github Pages</a></li>
                 <li><a href="https://github.com/gitname/react-gh-pages" target="_blank" rel="noreferrer">react-gh-pages</a></li>
+                <li><a href="https://getinsights.io/" target="_blank" re="noreferrer">Insights</a></li>
                 <li><a href="https://fonts.google.com/specimen/Fira+Sans" target="_blank" rel="noreferrer">Fira Sans</a></li>
                 <li><a href="https://favicon.io/" target="_blank" rel="noreferrer">favicon.io</a></li>
             </ul>
