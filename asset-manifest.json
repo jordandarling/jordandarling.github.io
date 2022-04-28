@@ -1,15 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.affb8b7c.css",
-    "main.js": "/static/js/main.a7f36495.js",
+    "main.css": "/static/css/main.5ee66ada.css",
+    "main.js": "/static/js/main.62cd5905.js",
     "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
+    "static/media/Streamster.ttf": "/static/media/Streamster.100ed9e790edecf5bd6a.ttf",
+    "static/media/SFAlienEncountersSolid-Ital.ttf": "/static/media/SFAlienEncountersSolid-Ital.f41f8f50c1a01e5ed12b.ttf",
+    "static/media/good times rg.otf": "/static/media/good times rg.a86d4f7f5cdb8cf2e409.otf",
     "index.html": "/index.html",
-    "main.affb8b7c.css.map": "/static/css/main.affb8b7c.css.map",
-    "main.a7f36495.js.map": "/static/js/main.a7f36495.js.map",
+    "main.5ee66ada.css.map": "/static/css/main.5ee66ada.css.map",
+    "main.62cd5905.js.map": "/static/js/main.62cd5905.js.map",
     "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.affb8b7c.css",
-    "static/js/main.a7f36495.js"
+    "static/css/main.5ee66ada.css",
+    "static/js/main.62cd5905.js"
   ]
 }
