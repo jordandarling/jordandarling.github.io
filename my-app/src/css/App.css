@@ -1,3 +1,4 @@
+
 body{
   /* background-color: #080114; */
   background: linear-gradient(#1c114a, #ea2371);
@@ -19,9 +20,15 @@ body{
 }
 
 @font-face {
-  font-family: body;
+  font-family: goodTimes;
   src: url(../fonts/good\ times\ rg.otf);
 }
+
+@font-face {
+  font-family: body;
+  src: url(../fonts/FiraSans-Regular.ttf);
+}
+
 
 .synth{
   font-family: synth;
@@ -38,3 +45,7 @@ body{
   flex-direction: column;
   align-items: center;
 }
+
+a{color:#f222ff; text-decoration: none; text-decoration: underline 0.15em rgba(0, 0, 0, 0); transition: text-decoration-color 300ms;}
+a:hover {text-decoration-color: #f222ff;}
+

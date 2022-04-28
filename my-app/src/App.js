@@ -6,6 +6,7 @@ import MasteryData from './MasteryData';
 import CurrentMatch from './CurrentMatch';
 import Navbar from './Navbar';
 import Contact from './Contact';
+import Attributions from './Attributions';
 
 
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/Contact" element={<Contact/>}/>
         <Route path="/MasteryData" element={<MasteryData/>} />
         <Route path="/CurrentMatch" element={<CurrentMatch/>} />
+        <Route path="/Attributions" element={<Attributions/>}/>
       </Routes>
     </Router>
   );

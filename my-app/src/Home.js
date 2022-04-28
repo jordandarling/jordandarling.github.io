@@ -13,7 +13,7 @@ const HeroText = (props) => {
             count = (count >= props.specialties.length - 1) ? 0 : count+=1;
             wordSelect(props.specialties[count]);
         }, 2500); 
-    }, [])
+    }, [props.specialties])
     return(
         <span className="heroText">{currentWord}</span>
     )
@@ -22,9 +22,8 @@ const HeroText = (props) => {
 function Home(){
 
     useEffect(() =>{
-        
-    }    
-    )
+        document.title ="Home"
+    })
 
     return(
         <div>
@@ -33,7 +32,10 @@ function Home(){
                 <h1 className="alien">Hey There!</h1>
                 <h1 className='synth'>I'm Jordan</h1>
             </div>
-            <h4 className="subHeader">I'm a full stack developer in Rochester, New York, with knowledge of <HeroText specialties={['React', 'HTML5', 'CSS3', 'PHP']}/></h4>
+            <h4 className="subHeader">I'm a full stack developer with knowledge of <HeroText specialties={['ReactJS', 'HTML5', 'CSS3', 'PHP', 'jQuery']}/></h4>
+            <p>Hi, I'm Jordan! I'm a full stack web developer working at the Rochester Institute of Technology! I've been working at RIT for several years now, and in my time have had extensive experience working with PHP, HTML, CSS, and jQuery.</p>
+
+            <p>In addition to my experience listed above, I'm also currently learning ReactJS, and built this site using ReactJS with React Router as a small showcase!</p>
         </div>
     )
 }

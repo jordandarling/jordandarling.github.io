@@ -17,6 +17,9 @@ function Navbar(){
             <Link to="/CurrentMatch">
                 Spells?
             </Link>
+            <Link to="/Attributions">
+                Attributions
+            </Link>
         </ul>
     )
 }
