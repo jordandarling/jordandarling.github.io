@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.5adc7ac3.css",
+    "main.css": "/static/css/main.d4815c85.css",
     "main.js": "/static/js/main.0d3c972d.js",
     "static/media/FiraSans-Regular.ttf": "/static/media/FiraSans-Regular.f4eb295ecc2fb842d61c.ttf",
     "static/media/plastitrak1.png": "/static/media/plastitrak1.c9277fd2eda095554d4a.png",
@@ -14,11 +14,11 @@
     "static/media/SFAlienEncountersSolid-Ital.ttf": "/static/media/SFAlienEncountersSolid-Ital.f41f8f50c1a01e5ed12b.ttf",
     "static/media/good times rg.otf": "/static/media/good times rg.a86d4f7f5cdb8cf2e409.otf",
     "index.html": "/index.html",
-    "main.5adc7ac3.css.map": "/static/css/main.5adc7ac3.css.map",
+    "main.d4815c85.css.map": "/static/css/main.d4815c85.css.map",
     "main.0d3c972d.js.map": "/static/js/main.0d3c972d.js.map"
   },
   "entrypoints": [
-    "static/css/main.5adc7ac3.css",
+    "static/css/main.d4815c85.css",
     "static/js/main.0d3c972d.js"
   ]
 }
