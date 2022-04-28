@@ -1,7 +1,31 @@
 body{
-  background-color: #121212;
+  background-color: #080114;
   color: white;
   font-size: calc(10px + 2vmin);
+  font-family: body;
+}
+
+@font-face {
+  font-family: synth;
+  src: url(../fonts/Streamster.ttf);
+}
+
+@font-face {
+  font-family: aliens;
+  src: url(../fonts/SFAlienEncountersSolid-Ital.ttf);
+}
+
+@font-face {
+  font-family: body;
+  src: url(../fonts/good\ times\ rg.otf);
+}
+
+.synth{
+  font-family: synth;
+}
+
+.alien{
+  font-family: aliens;
 }
 
 .App > div{

@@ -4,8 +4,8 @@ import './css/Navbar.css'
 
 function Navbar(){
     return(
-        <ul>
-            <Link to="/Home">
+        <ul className="menu">
+            <Link to="/">
                 Home
             </Link>
             <Link to="/MasteryData">
