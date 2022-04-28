@@ -11,12 +11,15 @@ function Navbar(){
             <Link to="/Contact">
                 Contact
             </Link>
-            <Link to="/MasteryData">
+            <Link to="/Portfolio">
+                Portfolio
+            </Link>
+            {/* <Link to="/MasteryData">
                 Mastery Data
             </Link>
             <Link to="/CurrentMatch">
                 Spells?
-            </Link>
+            </Link> */}
             <Link to="/Attributions">
                 Attributions
             </Link>

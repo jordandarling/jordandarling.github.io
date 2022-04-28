@@ -6,6 +6,7 @@ import './css/App.css';
 const HeroText = (props) => {
     const [currentWord, wordSelect] = useState('');
 
+
     useEffect(()=> {
         let count = 0;
         wordSelect(props.specialties[count]);
@@ -32,7 +33,7 @@ function Home(){
                 <h1 className="alien">Hey There!</h1>
                 <h1 className='synth'>I'm Jordan</h1>
             </div>
-            <h4 className="subHeader">I'm a full stack developer with knowledge of <HeroText specialties={['ReactJS', 'HTML5', 'CSS3', 'PHP', 'jQuery']}/></h4>
+            <h4 className="subHeader">I'm a full stack developer with knowledge of <HeroText specialties={['ReactJS', 'HTML5', 'CSS3', 'jQuery', 'PHP', 'MySQL']}/></h4>
             <p>Hi, I'm Jordan! I'm a full stack web developer working at the Rochester Institute of Technology! I've been working at RIT for several years now, and in my time have had extensive experience working with PHP, HTML, CSS, and jQuery.</p>
 
             <p>In addition to my experience listed above, I'm also currently learning ReactJS, and built this site using ReactJS with React Router as a small showcase!</p>

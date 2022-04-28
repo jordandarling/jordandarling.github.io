@@ -5,5 +5,3 @@ hover: rgb(3, 218, 198)
 
 .menu{padding: 0; display:flex; flex-wrap: wrap; justify-content: space-between; max-width: 1400px;}
 .menu > a{font-family: goodTimes;}
-a{color:#f222ff; text-decoration: none; text-decoration: underline 0.15em rgba(0, 0, 0, 0); transition: text-decoration-color 300ms;}
-a:hover {text-decoration-color: #f222ff;}
