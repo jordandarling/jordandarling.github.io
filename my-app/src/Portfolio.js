@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import './css/Portfolio.css';
 
 //When using webpack, img src needs to have {require(./<imgdir>)}
@@ -6,8 +6,13 @@ const DisplayedProject = (props) =>{
     const [firstImageDisplayed, updateFirstImage] = useState(true);
     const [secondImageDisplayed, updateSecondImage] = useState(true);
     const [thirdImageDisplayed, updateThirdImage] = useState(true);
+
+    useEffect(() => {
+        document.title = `Portfolio - ${props.display}`
+    })
+
     switch(props.display){
-        case "android":
+        case "Android":
             return(
                 <div className='workContainer' id="Android">
                     <h2>PlastiTrak</h2>
@@ -29,7 +34,7 @@ const DisplayedProject = (props) =>{
                     </div>
                 </div> 
             )
-        case "ios":
+        case "iOS":
             return(
                 <div className='workContainer' id="iOS">
                     <h2>Whether</h2>
@@ -47,7 +52,7 @@ const DisplayedProject = (props) =>{
                 </div>  
             )
         default:
-        case "web":
+        case "Web":
             return(
                 <div className='workContainer' id="Web">
                     <h2><a href="https://start.rit.edu">start.rit.edu</a></h2>
@@ -78,7 +83,7 @@ class Portfolio extends React.Component{
     constructor(props){
         super(props);
         this.state ={
-            display: 'web'
+            display: 'Web'
         }
         this.display = this.display.bind(this);
         this.clickChange = this.clickChange.bind(this);
@@ -98,9 +103,10 @@ class Portfolio extends React.Component{
     }
     
     render (){
+        document.title = "Portfolio";
         return (
             <div>
-                <h2>Work I've Done - <button className="workLink" href="#" onClick={() => this.display('web')}>Web</button> - <button className="workLink" onClick={() => this.display('android')}>Android</button> - <button className="workLink" onClick={() => this.display('ios')}>iOS</button></h2>
+                <h2>Work I've Done - <button className="workLink" href="#" onClick={() => this.display('Web')}>Web</button> - <button className="workLink" onClick={() => this.display('Android')}>Android</button> - <button className="workLink" onClick={() => this.display('iOS')}>iOS</button></h2>
                 <DisplayedProject display={this.state.display} changeManager={this.clickChange}/>
             </div>
         )

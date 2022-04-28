@@ -1,1 +1,4 @@
 p > a{word-break: break-word}
+ul{list-style-type: none;}
+
+ul > li::before{content: "> "}
