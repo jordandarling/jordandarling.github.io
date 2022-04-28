@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.d4815c85.css",
-    "main.js": "/static/js/main.0d3c972d.js",
+    "main.js": "/static/js/main.f24861d5.js",
     "static/media/FiraSans-Regular.ttf": "/static/media/FiraSans-Regular.f4eb295ecc2fb842d61c.ttf",
     "static/media/plastitrak1.png": "/static/media/plastitrak1.c9277fd2eda095554d4a.png",
     "static/media/index.png": "/static/media/index.983b168f40da878a6b31.png",
@@ -15,10 +15,10 @@
     "static/media/good times rg.otf": "/static/media/good times rg.a86d4f7f5cdb8cf2e409.otf",
     "index.html": "/index.html",
     "main.d4815c85.css.map": "/static/css/main.d4815c85.css.map",
-    "main.0d3c972d.js.map": "/static/js/main.0d3c972d.js.map"
+    "main.f24861d5.js.map": "/static/js/main.f24861d5.js.map"
   },
   "entrypoints": [
     "static/css/main.d4815c85.css",
-    "static/js/main.0d3c972d.js"
+    "static/js/main.f24861d5.js"
   ]
 }
