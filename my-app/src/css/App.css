@@ -1,5 +1,8 @@
 body{
-  background-color: #080114;
+  /* background-color: #080114; */
+  background: linear-gradient(#1c114a, #ea2371);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: white;
   font-size: calc(10px + 2vmin);
   font-family: body;

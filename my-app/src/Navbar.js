@@ -8,11 +8,14 @@ function Navbar(){
             <Link to="/">
                 Home
             </Link>
+            <Link to="/Contact">
+                Contact
+            </Link>
             <Link to="/MasteryData">
                 Mastery Data
             </Link>
             <Link to="/CurrentMatch">
-                What are my spells??
+                Spells?
             </Link>
         </ul>
     )
