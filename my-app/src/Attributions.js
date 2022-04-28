@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-
+import './css/Attributions.css';
 
 const Attributions = () => {
 
