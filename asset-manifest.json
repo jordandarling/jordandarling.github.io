@@ -1,17 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.6602f737.css",
-    "main.js": "/static/js/main.75b73a68.js",
+    "main.css": "/static/css/main.5adc7ac3.css",
+    "main.js": "/static/js/main.0d3c972d.js",
     "static/media/FiraSans-Regular.ttf": "/static/media/FiraSans-Regular.f4eb295ecc2fb842d61c.ttf",
+    "static/media/plastitrak1.png": "/static/media/plastitrak1.c9277fd2eda095554d4a.png",
+    "static/media/index.png": "/static/media/index.983b168f40da878a6b31.png",
     "static/media/Streamster.ttf": "/static/media/Streamster.100ed9e790edecf5bd6a.ttf",
+    "static/media/plastitrak2.png": "/static/media/plastitrak2.339ad89921b67146eb0a.png",
+    "static/media/whether1.png": "/static/media/whether1.958f2bf65e8ef118852c.png",
+    "static/media/directory.png": "/static/media/directory.6fcb65bcba6b8828e631.png",
+    "static/media/username.png": "/static/media/username.2da27a45ac25d8bf5ab3.png",
+    "static/media/whether2.png": "/static/media/whether2.5dd89bc1139e3faf5385.png",
     "static/media/SFAlienEncountersSolid-Ital.ttf": "/static/media/SFAlienEncountersSolid-Ital.f41f8f50c1a01e5ed12b.ttf",
     "static/media/good times rg.otf": "/static/media/good times rg.a86d4f7f5cdb8cf2e409.otf",
     "index.html": "/index.html",
-    "main.6602f737.css.map": "/static/css/main.6602f737.css.map",
-    "main.75b73a68.js.map": "/static/js/main.75b73a68.js.map"
+    "main.5adc7ac3.css.map": "/static/css/main.5adc7ac3.css.map",
+    "main.0d3c972d.js.map": "/static/js/main.0d3c972d.js.map"
   },
   "entrypoints": [
-    "static/css/main.6602f737.css",
-    "static/js/main.75b73a68.js"
+    "static/css/main.5adc7ac3.css",
+    "static/js/main.0d3c972d.js"
   ]
 }
