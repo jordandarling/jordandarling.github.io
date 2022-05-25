@@ -1,7 +1,9 @@
 {
   "files": {
-    "main.css": "/static/css/main.e6bd6789.css",
-    "main.js": "/static/js/main.81eaa2bc.js",
+    "main.css": "/static/css/main.bb6da9d2.css",
+    "main.js": "/static/js/main.cf541ff3.js",
+    "static/media/Moon.JPG": "/static/media/Moon.6a5dde4b7720a0724fd7.JPG",
+    "static/media/Lightning.JPG": "/static/media/Lightning.b61217ef0b6c62dd92c2.JPG",
     "static/media/FiraSans-Regular.ttf": "/static/media/FiraSans-Regular.f4eb295ecc2fb842d61c.ttf",
     "static/media/plastitrak1.png": "/static/media/plastitrak1.c9277fd2eda095554d4a.png",
     "static/media/index.png": "/static/media/index.983b168f40da878a6b31.png",
@@ -14,11 +16,11 @@
     "static/media/SFAlienEncountersSolid-Ital.ttf": "/static/media/SFAlienEncountersSolid-Ital.f41f8f50c1a01e5ed12b.ttf",
     "static/media/good times rg.otf": "/static/media/good times rg.a86d4f7f5cdb8cf2e409.otf",
     "index.html": "/index.html",
-    "main.e6bd6789.css.map": "/static/css/main.e6bd6789.css.map",
-    "main.81eaa2bc.js.map": "/static/js/main.81eaa2bc.js.map"
+    "main.bb6da9d2.css.map": "/static/css/main.bb6da9d2.css.map",
+    "main.cf541ff3.js.map": "/static/js/main.cf541ff3.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6bd6789.css",
-    "static/js/main.81eaa2bc.js"
+    "static/css/main.bb6da9d2.css",
+    "static/js/main.cf541ff3.js"
   ]
 }
