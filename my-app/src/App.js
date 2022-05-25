@@ -8,6 +8,7 @@ import Navbar from './Navbar';
 import Contact from './Contact';
 import Attributions from './Attributions';
 import Portfolio from './Portfolio';
+import Photography from './Photography';
 
 
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/MasteryData" element={<MasteryData/>} />
         <Route path="/CurrentMatch" element={<CurrentMatch/>} />
         <Route path="/Attributions" element={<Attributions/>}/>
+        <Route path="/Photography" element={<Photography/>}/>
       </Routes>
     </Router>
   );

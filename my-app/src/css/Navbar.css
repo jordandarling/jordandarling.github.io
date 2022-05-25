@@ -5,3 +5,4 @@ hover: rgb(3, 218, 198)
 
 .menu{padding: 0; display:flex; flex-wrap: wrap; justify-content: space-between; max-width: 1400px;}
 .menu > a{font-family: goodTimes;}
+.menu > a:not(:last-child){margin-right: 5px;}

@@ -1,0 +1,12 @@
+.photoGallery{
+    display: flex;
+    flex-direction: column;
+}
+
+.photoGallery figure{
+    margin: 0;
+}
+
+.photoGallery img{
+    width: 100%;
+}
