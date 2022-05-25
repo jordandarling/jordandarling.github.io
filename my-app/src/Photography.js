@@ -3,21 +3,21 @@ import './css/Photography.css';
 
 
 const photos = [
-    {'image':'Moon', 'cameraSettings': 'Nikon D3500 | ISO 100 | &#119891;/11.0 | 1/100s<br/>300mm | 6.3 | 70.0-300.0 mm f/4.5-6.3<br/>5/15/2022 - 11:00PM', 'description': '<p>Shot during the lunar eclipse of May 2022, this image was my first attempt at any form of astrophotography. The moon is an excellent place to start with astrophotography, as it\'s bright, easy to focus on, and doesn\'t require long exposure times.</p><p>This was my favorite shot of the night, despite not displaying the \'blood moon\' of the evening. While not particularly crimson, this image is a clear display of the various craters and lines that cover the lunar surface.</p>'},
-    {'image':'Moon', 'cameraSettings': 'Nikon D3500 | ISO 100 | &#119891;/11.0 | 1/100s<br/>300mm | 6.3 | 70.0-300.0 mm f/4.5-6.3<br/>5/15/2022 - 11:00PM', 'description': '<p>Shot during the lunar eclipse of May 2022, this image was my first attempt at any form of astrophotography. The moon is an excellent place to start with astrophotography, as it\'s bright, easy to focus on, and doesn\'t require long exposure times.</p><p>This was my favorite shot of the night, despite not displaying the \'blood moon\' of the evening. While not particularly crimson, this image is a clear display of the various craters and lines that cover the lunar surface.</p>'}
+    {'image':'Moon', 'cameraSettings': 'Nikon D3500 | ISO 100 | F/11.0 | 1/100s\n300mm | 6.3 | 70.0-300.0 mm f/4.5-6.3\n5/15/2022 - 11:00PM', 'description': 'Shot during the lunar eclipse of May 2022, this image was my first attempt at any form of astrophotography. The moon is an excellent place to start with astrophotography, as it\'s bright, easy to focus on, and doesn\'t require long exposure times.\nThis was my favorite shot of the night, despite not displaying the \'blood moon\' of the evening. While not particularly crimson, this image is a clear display of the various craters and lines that cover the lunar surface.'},
+    {'image':'Lightning', 'cameraSettings': 'Nikon D3500 | ISO 100 | F/8.0 | 10s\n24mm | ? | 18.0-55.0 mm f/3.5-5.6\n5/21/2022 - 10:22PM', 'description': 'Taken during a thunderstorm, this photo was my first successful shot of lightning.\nIt took numerous attempts to make it happen, but was well worth the work!'}
 ]
 
+
 const DisplayPhoto = (props) => {
-    console.log(props);
     return(
         <div>
             <figure>
             <img src={require(`./images/photography/${props.photo.image}.JPG`)} alt={props.photo.image}/>
-            <figcaption>
+            <figcaption style={{whiteSpace: 'pre'}}>
                 {props.photo.cameraSettings}
             </figcaption>
             </figure>
-            {props.photo.description}
+            <p>{props.photo.description}</p>
         </div>
     )
 }
@@ -29,7 +29,7 @@ const DisplayPhoto = (props) => {
  */
 const ListPhotos = (props) => {
     const photoList = props.photos.map((photo) =>
-        <option>{photo.image}</option>
+        <option key={photo.image}>{photo.image}</option>
     );
     return(
         <select onChange={props.handleChange}>
@@ -48,13 +48,13 @@ class Photography extends React.Component{
     }
 
     handleChange(event){
-        console.log(event.target.selectedIndex);
         this.setState({
             displayedPhoto: photos[event.target.selectedIndex]
         })
     }
 
     render(){
+        document.title = 'Photo Gallery';
         return(
             <div className="photoGallery">
                 <div className="photoGalleryHeader">
