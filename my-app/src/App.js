@@ -9,6 +9,7 @@ import Contact from './Contact';
 import Attributions from './Attributions';
 import Portfolio from './Portfolio';
 import Photography from './Photography';
+import TodoApp from './Todo';
 
 
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/CurrentMatch" element={<CurrentMatch/>} />
         <Route path="/Attributions" element={<Attributions/>}/>
         <Route path="/Photography" element={<Photography/>}/>
+        <Route path="/Todo" element={<TodoApp/>}/>
       </Routes>
     </Router>
   );

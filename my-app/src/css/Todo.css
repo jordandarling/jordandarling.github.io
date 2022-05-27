@@ -1,0 +1,16 @@
+.todoContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+ul input[type="checkbox"]{
+    border-radius: 100px;
+}
+
+li::before{
+    content: "" !important;
+}
+
+.toggle{text-decoration: line-through;}
