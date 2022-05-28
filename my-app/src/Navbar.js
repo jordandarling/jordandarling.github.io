@@ -23,6 +23,9 @@ function Navbar(){
             <Link to="/Photography">
                 Photography
             </Link>
+            <Link to="/DeadByDaylight">
+                Personal Projects
+            </Link>
             <Link to="/Attributions">
                 Attributions
             </Link>
