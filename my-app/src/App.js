@@ -10,6 +10,7 @@ import Attributions from './Attributions';
 import Portfolio from './Portfolio';
 import Photography from './Photography';
 import TodoApp from './Todo';
+import DeadByDaylight from './DeadByDaylight';
 
 
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/Attributions" element={<Attributions/>}/>
         <Route path="/Photography" element={<Photography/>}/>
         <Route path="/Todo" element={<TodoApp/>}/>
+        <Route path="/DeadByDaylight" element={<DeadByDaylight/>}/>
       </Routes>
     </Router>
   );
