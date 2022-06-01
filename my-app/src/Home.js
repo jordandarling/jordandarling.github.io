@@ -10,10 +10,13 @@ const HeroText = (props) => {
     useEffect(()=> {
         let count = 0;
         wordSelect(props.specialties[count]);
-        setInterval(function(){
+        let heroInterval = setInterval(function(){
             count = (count >= props.specialties.length - 1) ? 0 : count+=1;
             wordSelect(props.specialties[count]);
         }, 2500); 
+        return () => {
+            clearInterval(heroInterval)
+        }
     }, [props.specialties])
     return(
         <span className="heroText">{currentWord}</span>

@@ -217,7 +217,7 @@ class DeadByDaylight extends React.Component{
         return(
             <div>
                 <h1>Dead By Daylight Perk Search</h1>
-                {!this.state.processData && <div class="lds-dual-ring"></div>}
+                {!this.state.processData && <div className="lds-dual-ring"></div>}
                 <div className="perkFlex">
                     {this.state.processData && <PerkSearch perks={this.state.FilteredData} searchParameter={this.state.searchParameter} updateSearchParameters={this.UpdateSearchParameters} searchString={this.state.searchString} displayPerk={this.DisplayPerkInfo} addPerk={this.AddPerk} searchPerks={this.SearchPerks} chooseFaction={this.ChooseFaction}/>}
                     <div className="flexColumn">

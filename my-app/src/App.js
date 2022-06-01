@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { BrowserRouter as HashRouter, Routes, Route} from 'react-router-dom';
 import './css/App.css';
 import Home from './Home';
 import MasteryData from './MasteryData';
@@ -11,12 +11,13 @@ import Portfolio from './Portfolio';
 import Photography from './Photography';
 import TodoApp from './Todo';
 import DeadByDaylight from './DeadByDaylight';
+import Jordle from './Jordle';
 
 
 
 function App() {
   return (
-    <Router>
+    <HashRouter>
       <Navbar/>
       <Routes>
         <Route exact path="/" element={<Home/>} />
@@ -28,8 +29,9 @@ function App() {
         <Route path="/Photography" element={<Photography/>}/>
         <Route path="/Todo" element={<TodoApp/>}/>
         <Route path="/DeadByDaylight" element={<DeadByDaylight/>}/>
+        <Route path="/Jordle" element={<Jordle/>}/>
       </Routes>
-    </Router>
+    </HashRouter>
   );
 }
 

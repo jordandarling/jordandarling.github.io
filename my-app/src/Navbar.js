@@ -24,7 +24,10 @@ function Navbar(){
                 Photography
             </Link>
             <Link to="/DeadByDaylight">
-                Personal Projects
+                DBD Search
+            </Link>
+            <Link to="/Jordle">
+                Jordle
             </Link>
             <Link to="/Attributions">
                 Attributions

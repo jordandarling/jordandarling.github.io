@@ -3,9 +3,9 @@ import './css/Todo.css';
 
 let TodoList = (props) => {
     // Map each list item
-    let listItems = props.listItems.map((item, index) =>
-        <li key={index} onDoubleClick={props.editItem}><input type='checkbox' onClick={props.removeItem}></input>{item}</li>
-    );
+    let listItems = props.listItems.map((item, index) =>{
+        return <li key={index} onDoubleClick={props.editItem}><input type='checkbox' onClick={props.removeItem}></input>{item}</li>
+    });
 
     return(
         <div>
@@ -30,14 +30,14 @@ class TodoApp extends React.Component{
         this.clearItems = this.clearItems.bind(this);
         this.show = this.show.bind(this);
         this.state = {
-            items: [],
+            items: ['Check gus', 'check gus 2', 'fish'],
             toRemove: [],
             counter: 0
         }
     }
 
     updateList = (event) =>{
-        if(event.charCode === 13){
+        if(event.key === 'Enter'){
             let value = event.target.value;
             // Use an update function, set items equal to expanded previous state and add
             if(!this.state.items.includes(value) && !event.target.classList.contains('tempInput')){
@@ -46,12 +46,13 @@ class TodoApp extends React.Component{
                     counter: previousState.counter + 1
                 }));
             } else{
-                let newArray = this.state.items;
+                let newArray = [...this.state.items];
                 let arrayIndex = newArray.indexOf(event.target.dataset.originalitem);
                 this.setState(previousState => {
-                    const newItems = [...previousState.items];
+                    const newItems = previousState.items;
                     newItems[arrayIndex] = value;
                     return {items: newItems}
+                    // return {items: [...previousState.items, value]}
                 });
             }
             event.target.value = '';
