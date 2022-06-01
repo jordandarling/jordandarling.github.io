@@ -13,9 +13,8 @@ let PerkSearch = (props) => {
     }
 
     let perkIcons = parsePerks.map((perk) => 
-        <div className='perkContainer'>
-            <img key={perk.name} data-perkname={perk.name} data-perkdescription={perk.description} alt={perk.name} src={perk.icon} onClick={props.addPerk} onMouseOver={props.displayPerk}/>
-        </div>
+        <img key={perk.name} data-perkname={perk.name} data-perkdescription={perk.description} alt={perk.name} src={perk.icon} onClick={props.addPerk} onMouseOver={props.displayPerk}/>
+
         
     );
 

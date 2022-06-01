@@ -38,7 +38,8 @@ class Jordle extends React.Component{
 
 	componentDidMount(){
 		let filteredWords = WORDS.filter(word => word.includes('j'));
-		let ranNumber = Math.floor(Math.random() * filteredWords.length+1)
+		// let ranNumber = Math.floor(Math.random() * filteredWords.length+1)
+        let ranNumber = new Date().getDate();
 		this.setState({
 			wordToGuess: filteredWords[ranNumber]
 		}, ()=>console.log(this.state.wordToGuess));
@@ -69,7 +70,7 @@ class Jordle extends React.Component{
 		}
 	}
 
-	CheckGuess = (event) => {
+	CheckGuess = () => {
 		let guessArray = [...this.state.guessedWord]
 		let correctArray = [...this.state.wordToGuess]
 		let correct = 0;
@@ -104,6 +105,7 @@ class Jordle extends React.Component{
 	}
 
 	render(){
+        document.title = 'Jordle'
 		return (
 			<div className="container">
 				<h1>Jordle</h1>
