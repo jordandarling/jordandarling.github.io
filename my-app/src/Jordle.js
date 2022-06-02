@@ -4,17 +4,22 @@ import { WORDS } from './Reuse/Words';
 
 
 let GameBoard = (props) =>{
-	let createBoard = props.guesses.map((row, index) => 
+
+	let createGrid = (box) => {
+		return box.map((grid, index) => 
+			<div key={index} className={`b${index}`}>{grid}</div>
+		)
+	}
+
+	let createBoard = props.wordArray.map((box, index) => 
 		<div key={index} className={`a${index}`}>
-			{props.wordLength.map((box, index) => 
-				<input disabled autoCorrect='false' key={index} maxLength='1' onKeyUp={props.textProcess} className={`b${index}`} ></input>
-			)}
+			{createGrid(box)}
 		</div>
 	)
 
 	return(
 		<div className='gridContainer'>
-			{props.guesses.length > 0 && createBoard}
+			{props.wordArray.length > 0 && createBoard}
 		</div>
 	)
 }
@@ -24,17 +29,16 @@ class Jordle extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			wordLength: Array.from(Array(5)),
-			guesses: Array.from(Array(5)),
+			wordArray: Array.from(Array(6), () => new Array(5).fill(null)),
+			resultsArray: Array.from(Array(6), () => new Array(5).fill(null)),
 			currRow: 0,
 			counter: 0,
 			guessedWord: '',
 			wordToGuess: '',
 			victory: false,
-			defeat: false
 		}
-		// this.HandleClick = this.HandleClick.bind(this);
 		this.TextProcess = this.TextProcess.bind(this);
+		this.Share = this.Share.bind(this);
 	}
 
 	componentDidMount(){
@@ -44,53 +48,59 @@ class Jordle extends React.Component{
 		this.setState({
 			wordToGuess: filteredWords[ranNumber]
 		}, ()=>console.log(this.state.wordToGuess));
-		document.querySelector(`.a0 .b0`).disabled = false;
-	}
-
-	componentDidUpdate(){
-		console.log(this.state.guesses.length)
 	}
 
 	TextProcess = (event) => {
-		let children = Array.from(event.target.parentElement.children);
-		this.setState(prevState =>{
-			return {counter: prevState.counter + 10}
-		})
-		switch(event.key){
-			case 'Enter':
-				let array = [];
-				children.forEach(textEntry => array.push(textEntry.value))
-				if(event.target.parentElement.nextSibling){
-					event.target.parentElement.nextSibling.firstChild.disabled = false
-					event.target.parentElement.nextSibling.firstChild.focus()
-				};
-				this.setState({
-					guessedWord: array.join('')
-				}, ()=>this.CheckGuess())
-				break;
-			case 'Backspace':
-				event.target.previousSibling.focus();
-				break;
-			default:
-				console.log(event);
-				if(event.target.nextSibling){
-					event.target.nextSibling.disabled = false
-					event.target.nextSibling.focus();	
-				} 
+		if(event.key === 'Enter'){
+			this.CheckGuess();
+			return
 		}
+		let updateWord = this.state.wordArray[this.state.currRow];
+		if(updateWord[4] === null){
+			updateWord[this.state.counter] = event.key;
+			this.setState(prevState => ({
+				wordLength: updateWord,
+				counter: prevState.counter + 1
+			}));
+		}
+	}
 
+	Share = () => {
+		console.log(this.state.resultsArray)
+		let copyString = `Jordle ${this.state.currRow}/6\n`;
+		this.state.resultsArray.forEach(subArray => {
+			if(subArray[0] !== null){
+				subArray.forEach(letter => {
+					switch(letter){
+						case 'correct':
+							copyString += '🟩'
+							break;
+						case 'partial':
+							copyString += '🟨'
+							break;
+						default:
+							copyString += '🟥'
+							break;
+					}
+				})
+				copyString += '\n'
+			}
+		})
+		navigator.clipboard.writeText(copyString)
 	}
 
 	CheckGuess = () => {
-		let guessArray = [...this.state.guessedWord]
 		let correctArray = [...this.state.wordToGuess]
-		let correct = 0;
 		let currRow = this.state.currRow
+		let guessArray = this.state.wordArray[currRow]
+		let updatedResults = this.state.resultsArray[currRow];
+		let correct = 0;
 		guessArray.forEach((letter, index) => {
 			let lowercaseLetter = letter.toLowerCase();
 			let letterIndex = guessArray.indexOf(letter);
 			if(lowercaseLetter === correctArray[index]){
 				document.querySelector(`.a${currRow} .b${index}`).classList.add('correct')
+				updatedResults[index] = 'correct';
 				correct++;
 				if(correct === 5){
 					this.setState({
@@ -99,31 +109,53 @@ class Jordle extends React.Component{
 					document.querySelectorAll('input').forEach(input => input.disabled = true)
 				}
 			} else if(correctArray.includes(lowercaseLetter)){
+				updatedResults[index] = 'partial';
 				document.querySelector(`.a${currRow} .b${letterIndex}`).classList.add('partial')
 			} else{
+				updatedResults[index] = 'wrong';
 				document.querySelector(`.a${currRow} .b${letterIndex}`).classList.add('wrong')
 			}
 		});
-		if(this.state.currRow === this.state.guesses.length - 1 && !this.state.victory){
+		if(this.state.currRow === this.state.wordArray.length - 1 && !this.state.victory){
 			document.querySelectorAll('input').forEach(input => input.disabled = true);
 			this.setState({
 				defeat: true
 			})
 		}
 		this.setState((prevState) => ({
+			resultsArray: prevState.resultsArray.map((row, index) => {
+				if(index === currRow){
+					return updatedResults
+				} else{
+					return row;
+				}
+			}),
+			counter: 0,
 			currRow: prevState.currRow + 1
 		}));
 	}
 
 	render(){
         document.title = 'Jordle'
+		window.addEventListener('keyup', this.TextProcess);
 		return (
 			<div className="container">
 				<h1>Jordle</h1>
-				<GameBoard wordLength={this.state.wordLength} guesses={this.state.guesses} textProcess={this.TextProcess} handleClick={this.HandleClick}/>
-				<div className='allie'>it's wordle, but the word must contain j, ok</div>
-				{this.state.victory && <span style={{marginTop: '20px'}}>You got it in {this.state.currRow} {this.state.currRow === 1 ? <span>guess!</span> : <span>guesses!</span>}</span>}
-				{this.state.defeat && <span style={{marginTop: '20px'}}>The correct word was {this.state.wordToGuess}</span>}
+				<GameBoard  wordArray={this.state.wordArray}/>
+				<div className='allie'>
+					<h3>Welcome to Jordle!</h3>
+					The objective of the game is to correctly guess the 5 letter word within 6 tries. <br/>
+					The word <i>will</i> contain the letter J somewhere. <br/>
+					Each time you guess, the squares you most recently entered text into will change color, signifying which letters are correct, partially correct, or incorrect!
+					<div className='guessGuide'>
+						<span><div className='correct'></div>The letter is in the correct place</span>
+						<span><div className='partial'></div>The letter exists in the word, just in a different place</span>
+						<span><div className='wrong'></div>The letter appears nowhere in the word</span>
+					</div>
+					<button onClick={() => {document.querySelector('.allie').style.display = 'none'}}>Got it!</button>
+				</div>
+				{this.state.victory && <div><span style={{marginTop: '20px'}}>You got it in {this.state.currRow} {this.state.currRow === 1 ? <span>guess!</span> : <span>guesses!</span>}</span><button onClick={this.Share}>Share</button></div>}
+				{/* {this.state.defeat && <span style={{marginTop: '20px'}}>The correct word was {this.state.wordToGuess}</span>} */}
 			</div>
 		);
 	}
