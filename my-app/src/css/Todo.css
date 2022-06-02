@@ -10,7 +10,7 @@ ul input[type="checkbox"]{
 }
 
 li::before{
-    content: "" !important;
+    /* content: "" !important; */
 }
 
 .toggle{text-decoration: line-through;}

@@ -27,6 +27,7 @@ class Jordle extends React.Component{
 			wordLength: Array.from(Array(5)),
 			guesses: Array.from(Array(5)),
 			currRow: 0,
+			counter: 0,
 			guessedWord: '',
 			wordToGuess: '',
 			victory: false,
@@ -46,28 +47,38 @@ class Jordle extends React.Component{
 		document.querySelector(`.a0 .b0`).disabled = false;
 	}
 
+	componentDidUpdate(){
+		console.log(this.state.guesses.length)
+	}
+
 	TextProcess = (event) => {
 		let children = Array.from(event.target.parentElement.children);
-		if(event.target.nextSibling && event.key !== 'Tab' && event.key !== 'Backspace'){
-			event.target.nextSibling.disabled = false
-			event.target.nextSibling.focus();
-		} else if(event.target.value !== '' && event.key === 'Backspace'){
-			return;
+		this.setState(prevState =>{
+			return {counter: prevState.counter + 10}
+		})
+		switch(event.key){
+			case 'Enter':
+				let array = [];
+				children.forEach(textEntry => array.push(textEntry.value))
+				if(event.target.parentElement.nextSibling){
+					event.target.parentElement.nextSibling.firstChild.disabled = false
+					event.target.parentElement.nextSibling.firstChild.focus()
+				};
+				this.setState({
+					guessedWord: array.join('')
+				}, ()=>this.CheckGuess())
+				break;
+			case 'Backspace':
+				event.target.previousSibling.focus();
+				break;
+			default:
+				console.log(event);
+				if(event.target.nextSibling){
+					event.target.nextSibling.disabled = false
+					event.target.nextSibling.focus();	
+				} 
 		}
-		else if(event.target.previousSibling && event.target.value === '' && event.key === 'Backspace'){
-			event.target.previousSibling.focus();
-		}
-		if(event.key === "Enter"){
-			let array = [];
-			children.forEach(textEntry => array.push(textEntry.value))
-			if(event.target.parentElement.nextSibling){
-				event.target.parentElement.nextSibling.firstChild.disabled = false
-				event.target.parentElement.nextSibling.firstChild.focus()
-			};
-			this.setState({
-				guessedWord: array.join('')
-			}, ()=>this.CheckGuess())
-		}
+
 	}
 
 	CheckGuess = () => {
@@ -110,6 +121,7 @@ class Jordle extends React.Component{
 			<div className="container">
 				<h1>Jordle</h1>
 				<GameBoard wordLength={this.state.wordLength} guesses={this.state.guesses} textProcess={this.TextProcess} handleClick={this.HandleClick}/>
+				<div className='allie'>it's wordle, but the word must contain j, ok</div>
 				{this.state.victory && <span style={{marginTop: '20px'}}>You got it in {this.state.currRow} {this.state.currRow === 1 ? <span>guess!</span> : <span>guesses!</span>}</span>}
 				{this.state.defeat && <span style={{marginTop: '20px'}}>The correct word was {this.state.wordToGuess}</span>}
 			</div>
