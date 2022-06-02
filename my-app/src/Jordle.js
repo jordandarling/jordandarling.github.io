@@ -7,7 +7,7 @@ let GameBoard = (props) =>{
 
 	let createGrid = (box) => {
 		return box.map((grid, index) => 
-			<div key={index} className={`b${index}`}>{grid}</div>
+			<div key={index} className={props.correctLetters.includes(grid) ? 'correct' : props.partialLetters.includes(grid) ? 'partial' : props.wrongLetters.includes(grid) ? 'wrong' : ''}>{grid}</div>
 		)
 	}
 
@@ -24,6 +24,31 @@ let GameBoard = (props) =>{
 	)
 }
 
+let KeyBoard = (props) => {
+
+
+	let keyMap = (keys) => {
+		console.log(keys.split(''))
+		console.log(typeof keys);
+		return keys.split('').map(key => 
+			<button className={props.correctLetters.includes(key) ? 'correct' : props.partialLetters.includes(key) ? 'partial' : props.wrongLetters.includes(key) ? 'wrong' : ''} index={key} onClick={() => props.TextProcess(key)}>{key}</button>
+		)
+	}
+
+	let keyMapWrapper = props.keyMap.map(subKeys => 
+		<span>
+			{keyMap(subKeys)}
+		</span>
+	)
+
+	return(
+		<div className='keyboardContainer'>
+			{props.keyMap.length > 0 && keyMapWrapper}
+			<button onClick={props.CheckGuess}>Enter</button>
+		</div>
+	)
+}
+
 class Jordle extends React.Component{
 
 	constructor(props){
@@ -31,6 +56,9 @@ class Jordle extends React.Component{
 		this.state = {
 			wordArray: Array.from(Array(6), () => new Array(5).fill(null)),
 			resultsArray: Array.from(Array(6), () => new Array(5).fill(null)),
+			correctLetters: [],
+			partialLetters: [],
+			wrongLetters: [],
 			currRow: 0,
 			counter: 0,
 			guessedWord: '',
@@ -51,13 +79,15 @@ class Jordle extends React.Component{
 	}
 
 	TextProcess = (event) => {
-		if(event.key === 'Enter'){
+		let letter = ''
+		typeof event === 'string' ? letter = event : letter = event.key
+		if(letter === 'Enter'){
 			this.CheckGuess();
 			return
 		}
 		let updateWord = this.state.wordArray[this.state.currRow];
 		if(updateWord[4] === null){
-			updateWord[this.state.counter] = event.key;
+			updateWord[this.state.counter] = letter;
 			this.setState(prevState => ({
 				wordLength: updateWord,
 				counter: prevState.counter + 1
@@ -79,7 +109,7 @@ class Jordle extends React.Component{
 							copyString += '🟨'
 							break;
 						default:
-							copyString += '🟥'
+							copyString += '⬜'
 							break;
 					}
 				})
@@ -95,53 +125,61 @@ class Jordle extends React.Component{
 		let guessArray = this.state.wordArray[currRow]
 		let updatedResults = this.state.resultsArray[currRow];
 		let correct = 0;
-		guessArray.forEach((letter, index) => {
-			let lowercaseLetter = letter.toLowerCase();
-			let letterIndex = guessArray.indexOf(letter);
-			if(lowercaseLetter === correctArray[index]){
-				document.querySelector(`.a${currRow} .b${index}`).classList.add('correct')
-				updatedResults[index] = 'correct';
-				correct++;
-				if(correct === 5){
-					this.setState({
-						victory: true
+		if(guessArray[4] !== null){
+			guessArray.forEach((letter, index) => {
+				let lowercaseLetter = letter.toLowerCase();
+				if(lowercaseLetter === correctArray[index]){
+					updatedResults[index] = 'correct';
+					correct++;
+					this.setState(prevState => {
+						return {correctLetters: [...prevState.correctLetters, lowercaseLetter]}
 					});
-					document.querySelectorAll('input').forEach(input => input.disabled = true)
-				}
-			} else if(correctArray.includes(lowercaseLetter)){
-				updatedResults[index] = 'partial';
-				document.querySelector(`.a${currRow} .b${letterIndex}`).classList.add('partial')
-			} else{
-				updatedResults[index] = 'wrong';
-				document.querySelector(`.a${currRow} .b${letterIndex}`).classList.add('wrong')
-			}
-		});
-		if(this.state.currRow === this.state.wordArray.length - 1 && !this.state.victory){
-			document.querySelectorAll('input').forEach(input => input.disabled = true);
-			this.setState({
-				defeat: true
-			})
-		}
-		this.setState((prevState) => ({
-			resultsArray: prevState.resultsArray.map((row, index) => {
-				if(index === currRow){
-					return updatedResults
+					if(correct === 5){
+						this.setState({
+							victory: true
+						});
+					}
+				} else if(correctArray.includes(lowercaseLetter)){
+					updatedResults[index] = 'partial';
+					this.setState(prevState => {
+						return {partialLetters: [...prevState.partialLetters, lowercaseLetter]}
+					});
 				} else{
-					return row;
+					updatedResults[index] = 'wrong';
+					this.setState(prevState => {
+						return {wrongLetters: [...prevState.wrongLetters, lowercaseLetter]}
+					});
 				}
-			}),
-			counter: 0,
-			currRow: prevState.currRow + 1
-		}));
+			});
+			if(this.state.currRow === this.state.wordArray.length - 1 && !this.state.victory){
+				document.querySelectorAll('input').forEach(input => input.disabled = true);
+				this.setState({
+					defeat: true
+				})
+			}
+			this.setState((prevState) => ({
+				resultsArray: prevState.resultsArray.map((row, index) => {
+					if(index === currRow){
+						return updatedResults
+					} else{
+						return row;
+					}
+				}),
+				counter: 0,
+				currRow: prevState.currRow + 1
+			}));
+		}
 	}
 
 	render(){
         document.title = 'Jordle'
 		window.addEventListener('keyup', this.TextProcess);
+		const alphabet = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
 		return (
 			<div className="container">
 				<h1>Jordle</h1>
-				<GameBoard  wordArray={this.state.wordArray}/>
+				<GameBoard  wordArray={this.state.wordArray} correctLetters={this.state.correctLetters} partialLetters={this.state.partialLetters} wrongLetters={this.state.wrongLetters}/>
+				<KeyBoard keyMap={alphabet} TextProcess={this.TextProcess} CheckGuess={this.CheckGuess} correctLetters={this.state.correctLetters} partialLetters={this.state.partialLetters} wrongLetters={this.state.wrongLetters}/>
 				<div className='allie'>
 					<h3>Welcome to Jordle!</h3>
 					The objective of the game is to correctly guess the 5 letter word within 6 tries. <br/>
@@ -154,7 +192,7 @@ class Jordle extends React.Component{
 					</div>
 					<button onClick={() => {document.querySelector('.allie').style.display = 'none'}}>Got it!</button>
 				</div>
-				{this.state.victory && <div><span style={{marginTop: '20px'}}>You got it in {this.state.currRow} {this.state.currRow === 1 ? <span>guess!</span> : <span>guesses!</span>}</span><button onClick={this.Share}>Share</button></div>}
+				{this.state.victory && <div className='victoryText'><span style={{marginTop: '20px'}}>You got it in {this.state.currRow} {this.state.currRow === 1 ? <span>guess!</span> : <span>guesses!</span>}</span><button className='victoryButton' onClick={this.Share}>Share</button></div>}
 				{/* {this.state.defeat && <span style={{marginTop: '20px'}}>The correct word was {this.state.wordToGuess}</span>} */}
 			</div>
 		);
